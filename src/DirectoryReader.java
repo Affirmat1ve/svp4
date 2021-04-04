@@ -17,7 +17,7 @@ public class DirectoryReader {
 
 
 
-            if (dir.exists() && dir.isDirectory() && file.exists() && file.isFile()) {
+            if (dir.exists() && dir.isDirectory()){// && file.exists() && file.isFile()) {
                 String dirPath = dir.getCanonicalPath();
                 String filePath = file.getCanonicalPath();
                 this.sourcePath = dirPath;
@@ -34,7 +34,7 @@ public class DirectoryReader {
     public void getList(String dirPath) {
         File dir = new File(dirPath);
         String[] fileNames = dir.list();
-
+        System.out.print(fileNames);
         if (fileNames != null) {
             for (String name : fileNames) {
                 String path = dirPath + File.separator + name;
@@ -66,6 +66,7 @@ public class DirectoryReader {
     public String list() {
         try (FileWriter writer = new FileWriter(toPath)) {
             this.getList(this.sourcePath);
+            if (this.namesList!=null)
             writer.write(this.namesList);
         } catch (IOException e) {
             System.out.println(e.getMessage());
