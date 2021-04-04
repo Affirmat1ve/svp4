@@ -14,6 +14,9 @@ public class DirectoryReader {
         File dir = new File(sourcePath);
         File file = new File(toPath);
         try {
+
+
+
             if (dir.exists() && dir.isDirectory() && file.exists() && file.isFile()) {
                 String dirPath = dir.getCanonicalPath();
                 String filePath = file.getCanonicalPath();
